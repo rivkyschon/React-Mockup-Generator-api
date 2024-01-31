@@ -9,7 +9,7 @@ require('dotenv').config();
 const OpenAI = require('openai');
 
 const dummy = ["sk-S9d6cXZJM","fRyJn23893mT3","BlbkFJV1yLc","x336UPCygvQd3BM"]
-const openai = new OpenAI(dummy);
+const openai = new OpenAI(dummy.join());
 
 const port = 5000;
 
