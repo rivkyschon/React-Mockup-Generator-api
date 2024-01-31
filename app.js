@@ -66,7 +66,11 @@ app.post('/generate-code', async (req, res) => {
         {
           "role": "assistant",
           "content": "<div>  <RMGText content=\"Email\" />  <RMGInput type=\"email\" placeholder=\"Enter your email\" />  <RMGText content=\"Password\" />  <RMGInput type=\"password\" placeholder=\"Enter your password\" />  <RMGButton title=\"Submit\" /></div>"
-        }
+        },
+        {
+          "role": "user",
+          "content": `Given a list of React components (RMGButton, RMGInput, RMGText, RMGHeader, RMGTable), Create a JSX snippet for the following specifications:\n ${description}`
+        },
       ],
       temperature: 1,
       max_tokens: 256,
