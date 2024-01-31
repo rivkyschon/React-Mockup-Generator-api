@@ -7,6 +7,8 @@ app.use(express.json());
 
 require('dotenv').config();
 const OpenAI = require('openai');
+
+process.env.OPENAI_API_KEY = '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'///!!!!!!!!!!!!!
 const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 const port = 5000;
@@ -19,6 +21,9 @@ app.post('/generate-code', async (req, res) => {
   const description = req.body.description;  // Expecting a description of the page to generate
   const prompt = `Given a list of React components (RMGButton, RMGInput, RMGText, RMGHeader, RMGTable), generate a React component mockup for the following specifications:`;
   
+  console.log('====================================');
+  console.log(`key:  ${process.env.OPENAI_API_KEY}`);
+
   console.log('====================================');
   console.log(` ${prompt} : ${description}`);
   console.log('====================================');
@@ -75,15 +80,7 @@ app.post('/generate-code', async (req, res) => {
     console.log('====================================');
     console.log(` ${generatedCode}`);
     console.log('====================================');
-    res.json({ code:  ```jsx
-    <div>
-      <RMGText content="Email" />
-      <RMGInput type="email" placeholder="Enter your email" />
-      <RMGText content="Password" />
-      <RMGInput type="password" placeholder="Enter your password" />
-      <RMGButton title="Submit" />
-    </div>
-    ``` });
+    res.json({ code: generatedCode });
     
   } catch (error) {
     console.error(error);
@@ -91,3 +88,9 @@ app.post('/generate-code', async (req, res) => {
   }
 });
 
+
+app.get('/', async (req, res) => {
+
+  res.json({ test: "working!!!" });
+
+});
