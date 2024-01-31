@@ -8,8 +8,7 @@ app.use(express.json());
 require('dotenv').config();
 const OpenAI = require('openai');
 
-const dummy = ["sk-S9d6cXZJM","fRyJn23893mT3","BlbkFJV1yLc","x336UPCygvQd3BM"]
-const openai = new OpenAI(dummy.join());
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 const port = 5000;
 
@@ -42,7 +41,7 @@ app.post('/generate-code', async (req, res) => {
         },
         {
           "role": "assistant",
-          "content": "<div className=\"flex flex-col items-center p-4\">\n  <RMGImage src=\"path/to/profile_picture.png\" alt=\"Profile Picture\" />\n\t<RMGText content=\"John Doe\" ></RMGText>\n\t<RMGButton title=\"Follow\" onClick={()=>alert(\"hi\")} />\n</div>\n"
+          "content": "<div className=\"flex flex-col items-center p-4\"> <RMGImage src=\"path/to/profile_picture.png\" alt=\"Profile Picture\" /><RMGText content=\"John Doe\" ></RMGText><RMGButton title=\"Follow\" onClick={()=>alert(\"hi\")} /></div>"
         },
         {
           "role": "user",
@@ -58,7 +57,7 @@ app.post('/generate-code', async (req, res) => {
         },
         {
           "role": "assistant",
-          "content": "<div>\n  <div>\n    <RMGText content=\"First Name\" />\n    <RMGInput type=\"text\" placeholder=\"Enter your first name\" />\n  </div>\n  <div>\n    <RMGText content=\"Last Name\" />\n    <RMGInput type=\"text\" placeholder=\"Enter your last name\" />\n  </div>\n  <div>\n    <RMGText content=\"Email\" />\n    <RMGInput type=\"email\" placeholder=\"Enter your email\" />\n  </div>\n  <div>\n    <RMGText content=\"Password\" />\n    <RMGInput type=\"password\" placeholder=\"Enter your password\" />\n  </div>\n  <div>\n    <RMGButton title=\"Submit\" />\n  </div>\n</div>"
+          "content": "<div>  <div>    <RMGText content=\"First Name\" />    <RMGInput type=\"text\" placeholder=\"Enter your first name\" /> </div> <div>   <RMGText content=\"Last Name\" />    <RMGInput type=\"text\" placeholder=\"Enter your last name\" />  </div>  <div> <RMGText content=\"Email\" />   <RMGInput type=\"email\" placeholder=\"Enter your email\" /> </div> <div>  <RMGText content=\"Password\" />   <RMGInput type=\"password\" placeholder=\"Enter your password\" />  </div>  <div>    <RMGButton title=\"Submit\" /> </div></div>"
         },
         {
           "role": "user",
@@ -66,7 +65,7 @@ app.post('/generate-code', async (req, res) => {
         },
         {
           "role": "assistant",
-          "content": "<div>\n  <RMGText content=\"Email\" />\n  <RMGInput type=\"email\" placeholder=\"Enter your email\" />\n  <RMGText content=\"Password\" />\n  <RMGInput type=\"password\" placeholder=\"Enter your password\" />\n  <RMGButton title=\"Submit\" />\n</div>"
+          "content": "<div>  <RMGText content=\"Email\" />  <RMGInput type=\"email\" placeholder=\"Enter your email\" />  <RMGText content=\"Password\" />  <RMGInput type=\"password\" placeholder=\"Enter your password\" />  <RMGButton title=\"Submit\" /></div>"
         }
       ],
       temperature: 1,
