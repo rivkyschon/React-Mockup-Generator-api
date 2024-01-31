@@ -1,2 +1,45 @@
-# React-Mockup-Generator
-![image](https://github.com/rivkyschon/React-Mockup-Generator-api/assets/113901370/190cef4d-12bb-4897-932b-f43c46fcb7e3)
+# Node.js OpenAI API Server
+
+This Node.js server leverages the OpenAI API to generate code snippets based on user-defined specifications. The server, built on Express, incorporates CORS to manage cross-origin requests. It's structured to receive POST requests with descriptive content and return JSX snippets, utilizing React components, as per the requirements.
+
+## Features
+
+- **OpenAI API Integration**: Engages with OpenAI's GPT models to dynamically generate code snippets in response to user inputs.
+- **React Component Generation**: Formulates JSX snippets for React components tailored to specified user requirements.
+- **CORS Support**: Configured to handle cross-origin requests, facilitating the integration with frontend applications hosted on separate domains.
+
+## Libraries
+
+- **express**: A streamlined and adaptable Node.js web application framework, offering a comprehensive feature set for both web and mobile applications.
+- **cors**: A package for Node.js, providing middleware compatible with Connect/Express to enable CORS with various configuration options.
+- **dotenv**: A dependency-free module that loads environment variables from a `.env` file into `process.env`.
+- **openai**: The official Node.js client library for the OpenAI API.
+
+## Installation and Setup
+
+Execute these steps to configure the project locally. Ensure the availability of Node.js and npm in your environment.
+
+1. **Clone the Repository**
+
+   Clone the project from GitHub and navigate into the project directory:
+
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+   cd your-repository
+  
+2. **Install dependencies**
+
+Inside the project directory, install the necessary npm packages:
+   ```bash
+      npm install
+
+2. **Configure Environment Variable**
+
+Head over to https://platform.openai.com/api-keys and create your OPENAI_API_KEY.
+Create a .env file in the project's root directory and insert your OpenAI API key.
+
+   ```bash
+OPENAI_API_KEY=your_openai_api_key_here
+
+
+ 
