@@ -8,8 +8,7 @@ app.use(express.json());
 require('dotenv').config();
 const OpenAI = require('openai');
 
-const dummy = ["sk-S9d6cXZJM","fRyJn23893mT3","BlbkFJV1yLc","x336UPCygvQd3BM"]
-const openai = new OpenAI({apiKey : dummy.join()});
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 const port = 5000;
 
