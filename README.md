@@ -45,7 +45,7 @@ Execute these steps to configure the project locally. Ensure the availability of
    
 4. **Start the Server**
    
-   Initiate the server using the command below. It will default to listening on port 5000.
+   Initiate the server using the command below. It will by default listen on port 5000.
    ```bash
    npm start
    ```
