@@ -1,16 +1,20 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
+const OpenAI = require('openai');
+require('dotenv').config();
 
+const app = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-require('dotenv').config();
-const OpenAI = require('openai');
-
 const openai = new OpenAI(process.env.OPENAI_API_KEY);
-
 const port = 5000;
+
+function printLogs(msg){
+  console.log('====================================');
+  console.log(msg);
+  console.log('====================================');
+}
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
@@ -20,13 +24,9 @@ app.post('/generate-code', async (req, res) => {
   const description = req.body.description;  // Expecting a description of the page to generate
   const prompt = `Given a list of React components (RMGButton, RMGInput, RMGText, RMGHeader, RMGTable), generate a React component mockup for the following specifications:`;
   
-  console.log('====================================');
-  console.log(`key:  ${process.env.OPENAI_API_KEY}`);
+  printLogs(`key:  ${process.env.OPENAI_API_KEY}`);
+  printLogs(` ${prompt} : ${description}`);
 
-  console.log('====================================');
-  console.log(` ${prompt} : ${description}`);
-  console.log('====================================');
-  
   try {
     const gptResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
@@ -80,9 +80,8 @@ app.post('/generate-code', async (req, res) => {
     });
 
     const generatedCode = gptResponse.choices[0].message.content;
-    console.log('====================================');
-    console.log(` ${generatedCode}`);
-    console.log('====================================');
+    printLogs(generatedCode);
+ 
     res.json({ code: generatedCode });
     
   } catch (error) {
@@ -94,6 +93,6 @@ app.post('/generate-code', async (req, res) => {
 
 app.get('/', async (req, res) => {
 
-  res.json({ test: "working!!!" });
+  res.json({ test: "the endpoint is healthy" });
 
 });
