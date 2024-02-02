@@ -1,16 +1,20 @@
-const express = require('express');
-const cors = require('cors');
-const OpenAI = require('openai');
-require('dotenv').config();
+import express, { Application, Request, Response } from 'express';
+import cors from 'cors';
+import OpenAIApi  from 'openai';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const app = express();
+const app: Application = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-const openai = new OpenAI(process.env.OPENAI_API_KEY);
-const port = 5000;
+const openaiApiKey: string = process.env.OPENAI_API_KEY || '';
+const openai = new OpenAIApi({
+  apiKey: openaiApiKey
+});
+const port: number = 5000;
 
-function printLogs(msg){
+function printLogs(msg: string): void {
   console.log('====================================');
   console.log(msg);
   console.log('====================================');
@@ -20,12 +24,12 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-app.post('/generate-code', async (req, res) => {
-  const description = req.body.description;  // Expecting a description of the page to generate
-  const prompt = `Given a list of React components (RMGButton, RMGInput, RMGText, RMGHeader, RMGTable), generate a React component mockup for the following specifications:`;
+app.post('/generate-code', async (req: Request, res: Response) => {
+  const description: string = req.body.description;  // Expecting a description of the page to generate
+  const prompt: string = `Given a list of React components (RMGButton, RMGInput, RMGText, RMGHeader, RMGTable), generate a React component mockup for the following specifications:`;
   
-  printLogs(`key:  ${process.env.OPENAI_API_KEY}`);
-  printLogs(` ${prompt} : ${description}`);
+  printLogs(`key: ${openaiApiKey}`);
+  printLogs(`${prompt}: ${description}`);
 
   try {
     const gptResponse = await openai.chat.completions.create({
@@ -79,7 +83,7 @@ app.post('/generate-code', async (req, res) => {
       presence_penalty: 0,
     });
 
-    const generatedCode = gptResponse.choices[0].message.content;
+    const generatedCode: string = gptResponse.choices[0].message.content || '';
     printLogs(generatedCode);
  
     res.json({ code: generatedCode });
@@ -90,9 +94,6 @@ app.post('/generate-code', async (req, res) => {
   }
 });
 
-
-app.get('/', async (req, res) => {
-
+app.get('/', async (req: Request, res: Response) => {
   res.json({ test: "the endpoint is healthy" });
-
 });
