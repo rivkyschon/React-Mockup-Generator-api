@@ -46,7 +46,6 @@ import cors from 'cors';
 import OpenAIApi  from 'openai';
 import dotenv from 'dotenv';
 dotenv.config();
-process.env.OPENAI_API_KEY = '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' //!!!!!!!!!!!!!!
 const openaiApiKey: string = process.env.OPENAI_API_KEY || '';
 
 const app: Application = express();

@@ -8,9 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.openAiService = void 0;
-const logger_1 = require("../logger");
+const openai_1 = __importDefault(require("openai"));
+const logger_1 = require("../utils/logger");
+const openaiApiKey = process.env.OPENAI_API_KEY || '';
+const openai = new openai_1.default({ apiKey: openaiApiKey });
 const openAiService = (openai) => {
     const generateCode = (description) => __awaiter(void 0, void 0, void 0, function* () {
         // Interact with OpenAI API and return the generated code
