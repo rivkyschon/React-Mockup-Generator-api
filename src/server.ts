@@ -1,14 +1,58 @@
+// import express, { Application, Request, Response } from 'express';
+// import cors from 'cors';
+// import OpenAIApi from 'openai';
+// import dotenv from 'dotenv';
+// import { openAiService } from './services/openAIService';
+// import { Logger } from './utils/logger';
+
+// dotenv.config();
+
+// const app: Application = express();
+// app.use(cors());
+// app.use(express.json());
+
+// const openaiApiKey: string = process.env.OPENAI_API_KEY || '';
+// const openai = new OpenAIApi({ apiKey: openaiApiKey });
+// const codeService = openAiService(openai);
+
+// const port: number = 5000;
+
+// app.listen(port, () => {
+//   console.log(`Server is running on http://localhost:${port}`);
+// });
+
+// app.post('/generate-code', async (req: Request, res: Response) => {
+//   const description: string = req.body.description;
+//   Logger.printLogs(`key: ${openaiApiKey}`);
+
+//   try {
+//     const generatedCode = await codeService.generateCode(description);
+//     Logger.printLogs(generatedCode);
+//     res.json({ code: generatedCode });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send("Error processing your request");
+//   }
+// });
+
+// app.get('/', async (req: Request, res: Response) => {
+//   res.json({ test: "the endpoint is healthy" });
+// });
+
+
+
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import OpenAIApi  from 'openai';
 import dotenv from 'dotenv';
 dotenv.config();
+process.env.OPENAI_API_KEY = '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' //!!!!!!!!!!!!!!
+const openaiApiKey: string = process.env.OPENAI_API_KEY || '';
 
 const app: Application = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-const openaiApiKey: string = process.env.OPENAI_API_KEY || '';
 const openai = new OpenAIApi({
   apiKey: openaiApiKey
 });
