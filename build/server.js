@@ -49,7 +49,6 @@ const cors_1 = __importDefault(require("cors"));
 const openai_1 = __importDefault(require("openai"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-process.env.OPENAI_API_KEY = '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'; //!!!!!!!!!!!!!!
 const openaiApiKey = process.env.OPENAI_API_KEY || '';
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)()); // Enable CORS for all routes

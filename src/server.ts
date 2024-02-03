@@ -46,12 +46,12 @@ import cors from 'cors';
 import OpenAIApi  from 'openai';
 import dotenv from 'dotenv';
 dotenv.config();
-const openaiApiKey: string = process.env.OPENAI_API_KEY || '';
 
 const app: Application = express();
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
+const openaiApiKey: string = process.env.OPENAI_API_KEY || '';
 const openai = new OpenAIApi({
   apiKey: openaiApiKey
 });
