@@ -17,8 +17,4 @@ export class CodeGenerationController {
     }
   }
 
-  @Get('/')
-  getHealthCheck() {
-    return { test: "this endpoint is healthy" };
-  }
 }
