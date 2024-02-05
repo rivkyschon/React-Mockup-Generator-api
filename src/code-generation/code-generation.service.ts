@@ -26,7 +26,7 @@ export class CodeGenerationService {
           {
             role: 'system',
             content:
-              'You are Max a code generator.\nProvide your answer in JSON form. Reply with only the answer in JSON form and include no other commentary:\nGiven the following React components:\n[\n  {\n    "component": "RMGText",\n    "props": {\n      "content": "string"\n    }\n  },\n  {\n    "component": "RMGInput",\n    "props": {\n      "placeholder": "string",\n      "type": "string"\n    }\n  },\n  {\n    "component": "RMGImage",\n    "props": {\n      "src": "string",\n      "alt": "string",\n      "width": "string",\n      "height": "string"\n    }\n  },\n  {\n    "component": "RMGHeader",\n    "props": {\n      "text": "string"\n    }\n  },\n  {\n    "component": "RMGButton",\n    "props": {\n      "title": "string",\n      "onClick": "() => void"\n    }\n  }\n]\ncreate a JSON array representing the structure and properties \nfor the user specifications:',
+              'You are Max a code generator.\nProvide your answer in JSON form. Reply with only the answer in JSON form and include no other commentary:\nGiven the following React components:\n[\n  {\n    "component": "RMGText",\n    "props": {\n      "content": "string"\n    }\n  },\n  {\n    "component": "RMGInput",\n    "props": {\n      "placeholder": "string",\n      "type": "string"\n    }\n  },\n  {\n    "component": "RMGImage",\n    "props": {\n      "src": "string",\n      "alt": "string",\n      "width": "string",\n      "height": "string"\n    }\n  },\n  {\n    "component": "RMGHeader",\n    "props": {\n      "text": "string"\n    }\n  },\n{\n    "component": "RMGSubtitle",\n    "props": {\n      "text": "string"\n    }\n  },\n  {\n    "component": "RMGButton",\n    "props": {\n      "title": "string",\n      "onClick": "() => void"\n    }\n  }\n]\ncreate a JSON array representing the structure and properties \nfor the user specifications:',
           },
           {
             role: 'user',
@@ -60,12 +60,13 @@ export class CodeGenerationService {
           },
           {
             role: 'user',
-            content: 'please create a login form',
+            content:
+              'create an image gallery, come up with a title, subtitle and button for uploading more images.',
           },
           {
             role: 'assistant',
             content:
-              '[\n  {\n    "component": "RMGLabel",\n    "props": {\n      "content": "Email"\n    }\n  },\n  {\n    "component": "RMGInput",\n    "props": {\n      "type": "email",\n      "placeholder": "Enter your email"\n    }\n  },\n  {\n    "component": "RMGLabel",\n    "props": {\n      "content": "Password"\n    }\n  },\n  {\n    "component": "RMGInput",\n    "props": {\n      "type": "password",\n      "placeholder": "Enter your password"\n    }\n  },\n  {\n    "component": "RMGButton",\n    "props": {\n      "title": "Login",\n      "onClick": "() => void"\n    }\n  }\n]',
+              "[\n    {\n      component: 'RMGHeader',\n      props: {\n        text: 'Image Gallery',\n      },\n    },\n    {\n      component: 'RMGText',\n      props: {\n        content: 'Browse through our collection of beautiful images',\n      },\n    },\n    {\n      component: 'RMGButton',\n      props: {\n        title: 'Upload Images',\n        onClick: '() => void',\n      },\n    },\n    {\n      component: 'RMGImage',\n      props: {\n        src: 'path/to/image1.jpg',\n        alt: 'Image 1',\n        width: '300px',\n        height: '200px',\n      },\n    },\n    {\n      component: 'RMGImage',\n      props: {\n        src: 'path/to/image2.jpg',\n        alt: 'Image 2',\n        width: '300px',\n        height: '200px',\n      },\n    },\n    {\n      component: 'RMGImage',\n      props: {\n        src: 'path/to/image2.jpg',\n        alt: 'Image 2',\n        width: '300px',\n        height: '200px',\n      },\n    },\n    {\n      component: 'RMGImage',\n      props: {\n        src: 'path/to/image2.jpg',\n        alt: 'Image 2',\n        width: '300px',\n        height: '200px',\n      },\n    },\n  ]",
           },
           {
             role: 'user',
@@ -73,7 +74,7 @@ export class CodeGenerationService {
           },
         ],
         temperature: 1,
-        max_tokens: 256,
+        max_tokens: 1024,
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
