@@ -16,7 +16,6 @@ export class CodeGenerationService {
   }
 
   async generateCode(description: string): Promise<JSON> {
-    const introPrompt: string = `Given a list of React components (RMGButton, RMGInput, RMGText, RMGHeader, RMGTable), generate a React component mockup for the following specifications: \n`;
     this.logger.log(`request :\n ${description}`);
 
     try {
@@ -73,6 +72,7 @@ export class CodeGenerationService {
             content: `${description}`,
           },
         ],
+
         temperature: 1,
         max_tokens: 1024,
         top_p: 1,
@@ -82,10 +82,11 @@ export class CodeGenerationService {
 
       const generatedCodeString: string =
         gptResponse.choices[0].message.content || '';
-      this.logger.log(`Generated code string:\n ${generatedCodeString}`);
+      this.logger.log(`Generated code {string}:\n ${generatedCodeString}`);
 
       const generatedCode: JSON = JSON.parse(generatedCodeString);
-      this.logger.log(`Generated code:\n ${generatedCode}`);
+      this.logger.log(`Generated code {JSON}:\n ${generatedCode}`);
+
       return generatedCode;
     } catch (error) {
       this.logger.error('Error in codeGenerationService:', error);

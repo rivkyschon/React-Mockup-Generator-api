@@ -11,6 +11,6 @@ import { CodeGenerationController } from './code-generation.controller';
     }),
   ],
   controllers: [CodeGenerationController],
-  providers: [CodeGenerationService]
+  providers: [CodeGenerationService],
 })
 export class CodeGenerationModule {}
