@@ -10,7 +10,7 @@ This project is a NestJS application that leverages OpenAI's GPT-3.5 model to ge
 
 ## Libraries
 
-- **express**: A streamlined and adaptable Node.js web application framework, offering a comprehensive feature set for both web and mobile applications.
+- **nestjs**: A progressive Node.js framework for building efficient, reliable and scalable server-side applications.
 - **cors**: A package for Node.js, providing middleware compatible with Connect/Express to enable CORS with various configuration options.
 - **dotenv**: A dependency-free module that loads environment variables from a `.env` file into `process.env`.
 - **openai**: The official Node.js client library for the OpenAI API.
